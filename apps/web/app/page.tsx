@@ -1,102 +1,51 @@
-import Image, { type ImageProps } from "next/image";
-import { Button } from "@repo/ui/button";
-import styles from "./page.module.css";
-
-type Props = Omit<ImageProps, "src"> & {
-  srcLight: string;
-  srcDark: string;
-};
-
-const ThemeImage = (props: Props) => {
-  const { srcLight, srcDark, ...rest } = props;
-
+/*
+ * Esta es la página de bienvenida (El "Hola Mundo").
+ * Hemos borrado todas las importaciones de "@repo/ui" para que sea 100% limpia.
+ * Solo usa HTML y Tailwind CSS.
+ */
+export default function Page() {
   return (
-    <>
-      <Image {...rest} src={srcLight} className="imgLight" />
-      <Image {...rest} src={srcDark} className="imgDark" />
-    </>
-  );
-};
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-6 text-center">
+      
+      {/* Icono de bienvenida */}
+      <div className="mb-6 rounded-full bg-blue-100 p-6">
+        <span className="text-6xl">🏥</span>
+      </div>
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <ThemeImage
-          className={styles.logo}
-          srcLight="turborepo-dark.svg"
-          srcDark="turborepo-light.svg"
-          alt="Turborepo logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>apps/web/app/page.tsx</code>
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      <h1 className="mb-2 text-3xl font-extrabold text-blue-900">
+        DermiNutri UCE
+      </h1>
+      
+      <p className="mb-8 text-gray-600 max-w-xs mx-auto">
+        Sistema de Triaje Digital y Bienestar Universitario.
+        <br/>
+        <span className="text-xs text-gray-400 mt-2 block">Versión 1.0 (Base PWA)</span>
+      </p>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new/clone?demo-description=Learn+to+implement+a+monorepo+with+a+two+Next.js+sites+that+has+installed+three+local+packages.&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F4K8ZISWAzJ8X1504ca0zmC%2F0b21a1c6246add355e55816278ef54bc%2FBasic.png&demo-title=Monorepo+with+Turborepo&demo-url=https%3A%2F%2Fexamples-basic-web.vercel.sh%2F&from=templates&project-name=Monorepo+with+Turborepo&repository-name=monorepo-turborepo&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fturborepo%2Ftree%2Fmain%2Fexamples%2Fbasic&root-directory=apps%2Fdocs&skippable-integrations=1&teamSlug=vercel&utm_source=create-turbo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://turborepo.com/docs?utm_source"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-        <Button appName="web" className={styles.secondary}>
-          Open alert
-        </Button>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com/templates?search=turborepo&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://turborepo.com?utm_source=create-turbo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to turborepo.com →
-        </a>
-      </footer>
-    </div>
+      {/* Botones de acción (aún no funcionales) */}
+      <div className="flex flex-col gap-4 w-full max-w-sm">
+        <button className="w-full rounded-xl bg-blue-800 py-4 text-lg font-semibold text-white shadow-lg transition-all active:scale-95 hover:bg-blue-700">
+          Soy Estudiante
+        </button>
+        
+        <button className="w-full rounded-xl border-2 border-blue-200 bg-white py-4 text-lg font-semibold text-blue-800 shadow-sm transition-all active:scale-95 hover:bg-blue-50">
+          Soy Personal Administrativo
+        </button>
+      </div>
+
+      {/* Instrucciones para instalar la PWA */}
+      <div className="mt-12 rounded-lg bg-yellow-50 p-4 text-xs text-yellow-800 border border-yellow-200 max-w-xs">
+        📲 <strong>Instalar App:</strong>
+        <br />
+        {/* * Corregimos el error de JSX.
+          * El carácter ">" debe ser escapado como "&gt;" dentro de JSX 
+          * para que no se interprete como el cierre de una etiqueta HTML.
+          */}
+        Android: Menú Chrome &gt; Instalar App
+        <br />
+        iOS: Compartir &gt; Agregar a Inicio
+      </div>
+
+    </main>
   );
 }
